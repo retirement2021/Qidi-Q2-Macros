@@ -18,7 +18,7 @@ This configuration brings together the main printer configuration, custom macros
 
 ### This configuration is for a Qidi Q2 WITHOUT the Qidi Box
 
-These files have been developed around a Qidi Q2 being used with a **normal external filament spool** rather than the Qidi Box.
+These files have been developed around a Qidi Q2 being used with a **normal external filament spool or dry boxes** rather than the Qidi Box.
 
 If you have a Qidi Box installed, this is **not intended for you**.
 
@@ -57,13 +57,12 @@ The package includes:
 
 The repository contains four main configuration files.
 
-```text
 ├── printer.cfg
 ├── My_Configs.cfg
 ├── gcode_macro.cfg
 └── KAMP/
     └── Adaptive_Meshing.cfg
-```
+
 
 ## `printer.cfg`
 
@@ -105,10 +104,13 @@ Examples include:
 A customised `PRINT_START` sequence handling:
 
 * Homing
+* Loading the filament
+* Unloading the filament
 * Bed heating
 * Chamber heating
 * Z offset
 * Nozzle cleaning
+* Screws_Tilt
 * Z tilt
 * Adaptive bed meshing
 * Nozzle temperature
@@ -130,7 +132,7 @@ LOAD_FILAMENT_45mm purge
 LOAD_FILAMENT_ASA_ABS a hotter 45mm perge
 ```
 
-These are designed around using an **external filament spool**, rather than requiring the Qidi Box.
+These are designed around using an **external filament spool or dry boxes**, rather than requiring the Qidi Box.
 
 ---
 
@@ -245,17 +247,13 @@ For adaptive meshing to work correctly:
 
 The Qidi Q2 configuration uses a maximum bed mesh area of:
 
-```text
 X: 10 – 260 mm
 Y: 10 – 260 mm
-```
+
 
 with a default:
 
-```text
 9 × 9
-```
-
 probe grid.
 
 The configuration uses the bicubic bed-mesh algorithm.
@@ -270,12 +268,10 @@ The configuration contains custom nozzle-cleaning routines specifically designed
 
 These include:
 
-```text
 CLEAR_NOZZLE
 CLEAR_NOZZLE_PLR
 SHAKE_OOZE
 MOVE_TO_TRASH
-```
 
 The cleaning sequence is incorporated into the print preparation process.
 
@@ -313,6 +309,7 @@ Verify:
 * X/Y/Z movement
 * Probe operation
 * Bed mesh
+* screw_tilt
 * Z tilt
 * Extruder
 * Nozzle cleaning
@@ -363,5 +360,7 @@ The goal of this project is to make the transition to a more customised Klipper/
 Instead of spending time working out which macros are required, where they belong, how KAMP needs to be configured and how the various Qidi functions fit together, this repository provides the configuration as a starting point.
 
 **Copy, configure, check and print.**
+
+This is your "get out of jail card" if you completely muck it up, you can AS A LAST RESORT revert it back to factory settings: https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md. Do read it carefully and follow it to the letter. Point 7 must be understood. 
 
 
