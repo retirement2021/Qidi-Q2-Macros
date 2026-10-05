@@ -32,7 +32,7 @@ Before installing the supplied files, rename the existing configuration files so
 
 Rename:
 
-```text
+
 KAMP.cfg
 → KAMP.cfg-original
 
@@ -41,17 +41,14 @@ printer.cfg
 
 klipper-macros-qd
 → klipper-macros-qd-original
-```
 
 Then open the **KAMP** folder and rename:
 
-```text
 adaptive_meshing.cfg
 → adaptive_meshing.cfg-original
 
 KAMP_Settings.cfg
 → KAMP_Settings.cfg-original
-```
 
 These original files are retained as backups and can be restored if required.
 
@@ -65,10 +62,8 @@ At the top of the page, click **+ ADD** and select **Upload Files**.
 
 Upload the supplied:
 
-```text
 adaptive_Meshing.cfg
 KAMP_Settings.cfg
-```
 
 Once uploaded, click the blue folder icon to return to the main configuration directory.
 
@@ -78,11 +73,9 @@ Once uploaded, click the blue folder icon to return to the main configuration di
 
 Click **+ ADD** again and upload:
 
-```text
 printer.cfg
 My-Configs.cfg
 gcode_macro.cfg
-```
 
 Once all the files have been uploaded, double-click any configuration file to open it.
 
