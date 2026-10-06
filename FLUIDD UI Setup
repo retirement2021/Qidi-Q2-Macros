@@ -135,14 +135,22 @@ Organising the macros this way gives you quick access to the functions you use m
 ## 6. Bed Screw Adjustment
 
 The basic `SCREWS_TILT_CALCULATE` function is also available directly through the **Tools** section in Fluidd.
-The "SCREWS_TILT" macro is a fully prepared macro of the "SCREWS_TILT_CALCULATE" function, that homes, heats the bed, heats the nozzle, wipes the nozzle before it starts.
-
-This gives you easy access to the bed screw adjustment procedure without having to enter the command manually in the console.
+The "SCREWS_TILT" macro is a fully prepared macro of the "SCREWS_TILT_CALCULATE" function. 
+It homes, heats the bed, heats the nozzle, wipes the nozzle before it starts ensuring no filament is protruding from the nozzle,
+which is important seeing the nozzle is the bed probe.
 
 The Z_TILT macro does a similar job of homeing, heating and wiping for more complete user experience than the supplied function.
 
+UPGRADE: replacing the bed adjustment nuts and thunb nuts with a nylock nut and a plain washer on each bed adjust bolt makes bed tramming much easier. 
+I also replaced the original bed springs with much stronger springs. Blue 16 OD x 8.5 ID x 15mm length. Giving much more resistance when adjusting.
+https://www.aliexpress.com/item/1005010444681975.html?spm=a2g0o.order_list.order_list_main.48.ca1a1802MWPtS8
 ---
 
 ### Important
 
-Keep the original configuration files you downloaded as a backup. If you encounter a problem with the new configuration, you can use these files to restore your original setup.
+Keep your original configuration files you downloaded from your machine as a backup. 
+If you encounter a problem with the new configuration, you can use these files to restore your original setup.
+
+This is your "get out of jail card" if you completely muck it up, you can AS A LAST RESORT revert it back to factory settings:
+https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md. 
+Do read it carefully and follow it to the letter. Point 7 must be understood. 
