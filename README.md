@@ -361,6 +361,6 @@ Instead of spending time working out which macros are required, where they belon
 
 **Copy, configure, check and print.**
 
-This is your "get out of jail card" if you completely muck it up, you can AS A LAST RESORT revert it back to factory settings: https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md. Do read it carefully and follow it to the letter. Point 7 must be understood. 
+
 
 
