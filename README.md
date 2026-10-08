@@ -50,6 +50,7 @@ The package includes:
 * Useful Fluidd controls and status functions
 * Qidi-specific compatibility macros
 * Various convenience and maintenance macros
+* Lubrication timer and maintenance sequence
 
 ---
 
@@ -211,6 +212,7 @@ Among other things, it provides:
 * Sensor enable/disable
 * Qidi-compatible commands
 * Printer utility functions
+* Maintenance timer and sequence
 
 The macros use Qidi Q2-specific positions and hardware, so this file should be regarded as **Qidi Q2 specific** rather than a generic Klipper macro collection.
 
@@ -261,6 +263,10 @@ The configuration uses the bicubic bed-mesh algorithm.
 A full-bed mesh can therefore be generated when required, while KAMP can be used for normal prints.
 
 ---
+# maintenance timer and sequence
+
+After a user configured print timer will remind you and go through a lubrication sequence. 
+Currently set at 30hrs of print time before the reminder will appear.
 
 # Nozzle Cleaning
 
