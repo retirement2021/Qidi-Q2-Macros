@@ -35,7 +35,7 @@ G1 Y270 F20000
 G1 Y287.5 F1500
 {if max_layer_z < max_print_height / 2}G1 Z{max_print_height / 2 + 10} F600{else}G1 Z{min(max_print_height, max_layer_z + 3)}{endif}
 M104 S0
-PRINT_END
+MY_PRINT_END
 G4 P7000
 UNLOAD_FILAMENT T=[current_extruder]
 
