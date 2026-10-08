@@ -1,372 +1,367 @@
-# Qidi-Q2
-Qidi Q2  Without a Qidi Box, Macros and adaptive bed mesh
 # Qidi Q2 – Klipper Configuration & Macros
 
-A complete set of custom Klipper configuration and macros for the **Qidi Q2 without the Qidi Box**.
+A complete Klipper setup for the Qidi Q2 without the Qidi Box, built around a normal external filament spool or dry box setup.
 
-Qidi Q2, configs, macros, 3D printer, Klipper, firmware, settings, printer configuration
-
-The aim of this project is simple:
-
-**To provide Qidi Q2 owners who are running without a Qidi Box with a ready-to-use Klipper configuration, rather than requiring them to build and modify the configuration themselves.**
-
-This configuration brings together the main printer configuration, custom macros, KAMP adaptive bed meshing and a number of useful Klipper/Fluidd functions into one working setup.
+This repository brings together the main printer configuration, custom macros, KAMP adaptive bed meshing, Fluidd customisation, and helper files for a more usable Q2 experience without the stock Qidi ecosystem.
 
 ---
 
-## ⚠️ Important
+## Overview
+
+This project exists to make the Qidi Q2 easier to run under Klipper and Fluidd without needing to build everything from scratch.
+
+It includes:
+
+- Main Qidi Q2 `printer.cfg`
+- Custom macro configuration in `My_Configs.cfg`
+- Additional utility and compatibility macros in `gcode_macro.cfg`
+- KAMP adaptive bed meshing and purge setup
+- Qidi-specific print/start/end logic and filament routines
+- Fluidd console cleaning presets
+- Fluidd UI organisation notes
+- ORCA slicer machine settings for the print-start and print-end sequences
+
+---
+
+## Important
 
 ### This configuration is for a Qidi Q2 WITHOUT the Qidi Box
 
-These files have been developed around a Qidi Q2 being used with a **normal external filament spool or dry boxes** rather than the Qidi Box.
+This setup is intended for a Qidi Q2 running standard Klipper with an external filament setup, not the stock Qidi Box system.
 
-If you have a Qidi Box installed, this is **not intended for you**.
+If you are using the Qidi Box, this repository is not intended for your printer setup.
 
-The configuration contains some original Qidi code and compatibility sections because they form part of the Q2's normal Klipper environment. However, the custom functionality in this repository is primarily aimed at the **non-Qidi-Box Q2**.
-
----
-
-# What This Project Provides
-
-The intention is to give a Qidi Q2 owner a well-rounded Klipper/Fluidd setup with minimal configuration work.
-
-The package includes:
-
-* Main Qidi Q2 `printer.cfg`
-* Custom macro configuration
-* Custom print-start sequence
-* Custom print-end functions
-* KAMP adaptive bed meshing
-* Full 9 × 9 bed probing
-* Nozzle cleaning routines
-* Filament loading and unloading
-* Filament runout handling
-* Pause-at-layer functions
-* PID tuning macros
-* Z-offset handling
-* Resonance testing configuration
-* Z-tilt adjustment
-* Bed mesh configuration
-* Useful Fluidd controls and status functions
-* Qidi-specific compatibility macros
-* Various convenience and maintenance macros
-* Lubrication timer and maintenance sequence
+The configuration still contains Qidi-specific compatibility sections where needed, but the custom behaviour and macros in this repository are designed for a more manual, external-filament workflow.
 
 ---
 
-# Files
+## What this project includes
 
-The repository contains four main configuration files.
+### Main printer configuration
 
-├── printer.cfg
-├── My_Configs.cfg
-├── gcode_macro.cfg
-└── KAMP/
-    └── Adaptive_Meshing.cfg
+`printer.cfg` includes the core Qidi Q2 configuration:
 
+- CoreXY motion setup
+- X/Y/Z steppers and drivers
+- Extruder configuration
+- Heated bed and chamber control
+- Fans and cooling
+- Probe and bed mesh configuration
+- Input shaping / resonance testing
+- Z tilt and tramming configuration
+- Filament runout sensor
+- Fluidd/Klipper integration
+- Included KAMP and custom macro references
 
-## `printer.cfg`
+### Custom macros
 
-The main Qidi Q2 Klipper configuration.
+`My_Configs.cfg` contains the main custom automation for the printer, including:
 
-This contains the printer's:
+- `PRINT_START`
+- `MY_PRINT_END`
+- `CANCEL_PRINT`
+- `LOAD_FILAMENT`
+- `UNLOAD_FILAMENT`
+- `SCREWS_TILT`
+- `Z_TILT`
+- `PID_BED`
+- `PID_EXTRUDER`
+- `SET_PAUSE_NEXT_LAYER`
+- `SET_PAUSE_AT_LAYER`
+- `PROBE_BED`
+- Lubrication timer and maintenance reminders
+- Custom nozzle cleaning and wipe routines
+- Filament purge and cleanout behaviours for PLA/PETG and ASA/ABS
 
-* CoreXY motion system
-* X, Y and Z steppers
-* TMC motor drivers
-* Extruder
-* Hotend
-* Heated bed
-* Chamber heater
-* Fans
-* Probe
-* Filament sensor
-* Accelerometer
-* Bed mesh
-* Z tilt
-* Resonance testing
-* Save variables
-* Klipper/Fluidd configuration
+### Utility macros
 
-It also contains the required includes for the custom configuration and KAMP.
+`gcode_macro.cfg` contains the lower-level helper macros for:
+
+- Position parameters
+- Homing helpers
+- Z offset saving and restoring
+- Nozzle clear / wipe / ooze routines
+- Move-to-trash positions
+- Sensor enable/disable helpers
+- Fan and chamber temperature override handling
+- Input-shaping and calibration workflows
+- Pause/resume behaviour
+- Filament load/unload flows
+- Cutter and cleaning actions
+
+### KAMP adaptive bed meshing
+
+The repository includes KAMP support for adaptive mesh generation instead of probing the full bed every print.
+
+Included files:
+
+- `KAMP/Adaptive_Meshing.cfg`
+- `KAMP/KAMP_Settings.cfg`
+- `KAMP/Line_Purge.cfg`
+
+KAMP features included here:
+
+- Adaptive mesh generation around printed objects
+- Smart park support
+- Line purge support
+- Reduced probing time on normal prints
+- Full-bed mesh option still available
+
+Important requirements for KAMP:
+
+1. `Adaptive_Meshing.cfg` is loaded.
+2. No conflicting `BED_MESH_CALIBRATE` macro overrides KAMP.
+3. `[exclude_object]` is enabled in the slicer.
+4. The slicer provides object information for adaptive mesh calculation.
 
 ---
 
-## `My_Configs.cfg`
+## Bed mesh and probing setup
 
-This is the main collection of **custom macros and modifications**.
+The configuration uses a full bed mesh range of:
 
-It contains many of the functions that make this configuration different from the standard Qidi setup.
+- X: 10 – 260 mm
+- Y: 10 – 260 mm
+
+Default mesh:
+
+- 9 × 9 probe grid
+
+Mesh algorithm:
+
+- Bicubic
+
+This allows:
+
+- Full-bed mesh when needed
+- KAMP adaptive mesh as the normal print workflow
+
+---
+
+## Print process and workflow
+
+The general workflow in this repo is:
+
+1. Backup current configuration.
+2. Install the supplied files.
+3. Ensure the printer.cfg includes the correct macros and KAMP files.
+4. Restart Klipper.
+5. Check homing, movement, temperatures, probe, bed mesh, Z tilt, and filament sensor.
+6. Start printing with the configured print-start sequence.
+
+The print-start logic includes:
+
+- Homing
+- Chamber heating
+- Bed heating
+- Z offset reset
+- Nozzle cleaning
+- Z tilt adjust
+- Adaptive bed mesh
+- Temperature waits
+- KAMP purge line
+
+The print-end logic includes:
+
+- Cooling and heater shutdown
+- Z offset save
+- Lubrication timer update
+- Sensor disable
+- Mesh clear
+- Print status reset
+
+---
+
+## Filament functions
+
+The repo includes multiple filament workflows for different material types.
+
+### Loading
 
 Examples include:
 
-### Print Start
+- `LOAD_FILAMENT`
+- `LOAD_FILAMENT_PLA_PETG`
+- `LOAD_FILAMENT_PETG_PLA`
+- `LOAD_FILAMENT_ASA_ABS`
 
-A customised `PRINT_START` sequence handling:
+These are designed around using a dry box or external spool system instead of the Qidi Box.
 
-* Homing
-* Loading the filament
-* Unloading the filament
-* Bed heating
-* Chamber heating
-* Z offset
-* Nozzle cleaning
-* Screws_Tilt
-* Z tilt
-* Adaptive bed meshing
-* Nozzle temperature
-* Filament sensing
-* Print preparation
-
----
-
-### Filament Loading
-
-Custom filament-loading macros provide simple options for different filament situations.
+### Unloading
 
 Examples include:
 
-```text
-LOAD_FILAMENT
-LOAD_FILAMENT_20mm purge
-LOAD_FILAMENT_45mm purge
-LOAD_FILAMENT_ASA_ABS a hotter 45mm perge
-```
+- `UNLOAD_FILAMENT`
+- `UNLOAD_FILAMENT_PLA_PETG`
+- `UNLOAD_FILAMENT_ASA_ABS`
 
-These are designed around using an **external filament spool or dry boxes**, rather than requiring the Qidi Box.
+These include extra heat and cleaning routines for different filament classes.
 
----
+### Pause at layer
 
-### Filament Unloading
+Examples:
 
-Custom unload functions are also provided, including a higher-temperature unload option for materials such as ASA/ABS.
+- `SET_PAUSE_NEXT_LAYER`
+- `SET_PAUSE_AT_LAYER LAYER=37`
 
----
-
-### Pause at Layer
-
-The configuration includes custom layer-pause controls.
-
-For example:
-
-```gcode
-SET_PAUSE_NEXT_LAYER
-```
-
-or:
-
-```gcode
-SET_PAUSE_AT_LAYER LAYER=37
-```
-
-This allows a print to be paused automatically at a chosen layer.
+This is useful for inspection or mid-print intervention.
 
 ---
 
-### PID Tuning
+## Nozzle cleaning and maintenance
 
-Simple macros are provided for PID tuning.
+The repo contains custom nozzle cleaning routines tailored to the Qidi Q2’s nozzle cleaning area.
 
-For example:
+Included routines:
 
-```gcode
-PID_BED TARGET_TEMP=60
-```
+- `CLEAR_NOZZLE`
+- `CLEAR_NOZZLE_PLR`
+- `SHAKE_OOZE`
+- `MOVE_TO_TRASH`
 
-and:
+These are integrated into print preparation, filament loading, unloading, and maintenance routines.
 
-```gcode
-PID_EXTRUDER TARGET_TEMP=235
-```
+The project also includes a maintenance timer sequence:
 
----
-
-### Bed Probing
-
-A custom:
-
-```gcode
-PROBE_BED
-```
-
-macro is included for performing a full bed calibration.
-
-The routine heats the bed, cleans the nozzle, performs a **9 × 9 bed mesh**, saves the resulting mesh and returns the printer to a safe position.
+- print time reminder before lubrication work is recommended
+- current setup: approx. 30 hours of print time before reminder
 
 ---
 
-# `gcode_macro.cfg`
+## Fluidd and console setup
 
-This file contains additional Qidi Q2 macros and supporting functions.
+Recent additions to the repository include a series of Fluidd-specific helper files and workflow notes.
 
-Among other things, it provides:
+### `FLUIDD UI Setup`
 
-* Printer position parameters
-* Homing helper
-* Z-offset functions
-* Nozzle cleaning
-* Nozzle wiping
-* Ooze clearing
-* Move-to-trash position
-* Filament extrusion/flush functions
-* Sensor enable/disable
-* Qidi-compatible commands
-* Printer utility functions
-* Maintenance timer and sequence
+This guide explains how to:
 
-The macros use Qidi Q2-specific positions and hardware, so this file should be regarded as **Qidi Q2 specific** rather than a generic Klipper macro collection.
+- back up the existing Klipper configuration
+- rename original files
+- install the supplied KAMP and macro files
+- organise macros into categories in Fluidd
+- use the bed screw adjustment macros and Z tilt routine
 
----
+### `Clean up the Fluidd Console`
 
-# KAMP Adaptive Meshing
+This file explains how to add console filters to hide noisy metadata and probe messages, keeping the console readable and focused on useful output.
 
-The included `Adaptive_Meshing.cfg` provides adaptive bed meshing.
+### `Fluidd-Settings-Backup.json`
 
-Instead of probing the entire bed for every print, KAMP examines the objects in the G-code and calculates the area that needs to be probed.
-
-The mesh is therefore concentrated around the actual print area.
-
-The configuration also includes:
-
-```ini
-[exclude_object]
-```
-
-which is required for the adaptive mesh calculation.
-
-### Requirements
-
-For adaptive meshing to work correctly:
-
-1. `Adaptive_Meshing.cfg` must be loaded.
-2. There must not be another active `BED_MESH_CALIBRATE` macro overriding it.
-3. `[exclude_object]` must be enabled within the slicer.
-4. The slicer must provide the required object information.
+This is a saved Fluidd settings export that can be imported into a Fluidd installation to restore the cleaner console view and configured layout.
 
 ---
 
-# Bed Mesh
+## ORCA slicer settings
 
-The Qidi Q2 configuration uses a maximum bed mesh area of:
+The repository also includes a file for ORCA slicer machine settings:
 
-X: 10 – 260 mm
-Y: 10 – 260 mm
+- `ORCA machine settings sept 2026`
 
+This contains example print-start and print-end G-code based on the macros in this setup, including:
 
-with a default:
+- `PRINT_START` usage
+- `SET_PRINT_STATS_INFO`
+- `M140`, `M104`, `M141`
+- chamber and bed temperature handling
+- adaptive mesh start sequence
+- `MY_PRINT_END`
+- `UNLOAD_FILAMENT`
+- layer-change and pause handling
 
-9 × 9
-probe grid.
-
-The configuration uses the bicubic bed-mesh algorithm.
-
-A full-bed mesh can therefore be generated when required, while KAMP can be used for normal prints.
-
----
-# maintenance timer and sequence
-
-After a user configured print timer will remind you and go through a lubrication sequence. 
-Currently set at 30hrs of print time before the reminder will appear.
-
-# Nozzle Cleaning
-
-The configuration contains custom nozzle-cleaning routines specifically designed around the Qidi Q2's nozzle-cleaning area.
-
-These include:
-
-CLEAR_NOZZLE
-CLEAR_NOZZLE_PLR
-SHAKE_OOZE
-MOVE_TO_TRASH
-
-The cleaning sequence is incorporated into the print preparation process.
-
-Because the movements are based on the physical Qidi Q2, these macros should **not be copied to another printer without checking the coordinates first**.
-
-
-# Using the Configuration
-
-The intention is that a Qidi Q2 owner without a Qidi Box can use these files as a starting point rather than having to create all of the macros and configuration manually.
-
-### Recommended approach
-
-**1. Back up your existing configuration**
-
-Always make a complete backup before replacing any Klipper configuration files.
-
-**2. Copy the required configuration files**
-rename your.cfg files with -original at the end for id
-
-Place the supplied files into your Klipper configuration directory.
-
-**3. Check the includes**
-
-Make sure `printer.cfg` points to the supplied custom configuration and KAMP files.
-
-**4. Restart Klipper**
-
-After installing the files, perform a Klipper restart and check the console for configuration errors.
-
-**5. Check the printer before printing**
-
-Verify:
-
-* Homing
-* X/Y/Z movement
-* Probe operation
-* Bed mesh
-* screw_tilt
-* Z tilt
-* Extruder
-* Nozzle cleaning
-* Fans
-* Heaters
-* Filament sensor
-
-Do this before starting a print.
+This is useful if you are slicing with ORCA and want the print routine to match the macros and setup in this repo.
 
 ---
 
-# A Note About the Qidi Original Configuration
+## Files in this repository
 
-This project does not attempt to reinvent every part of the Qidi Q2 Klipper configuration.
+The repository currently contains:
 
-Where appropriate, Qidi's original configuration and macros are retained and combined with custom Klipper functionality.
-
-The purpose is to provide a **practical, working configuration for the Q2 without the Qidi Box**, while retaining the useful parts of the original Qidi environment.
-
----
-
-# Important
-
-These configuration files contain **Qidi Q2-specific hardware settings, movement coordinates and macro behaviour**.
-
-They should not be considered a generic Klipper configuration.
-
-If you have modified your Q2 hardware, some settings may need to be adjusted for your particular machine.
-
-Always check the printer's movement and heater behaviour after installing a new configuration.
+- `printer.cfg`
+- `My_Configs.cfg`
+- `gcode_macro.cfg`
+- `KAMP/Adaptive_Meshing.cfg`
+- `KAMP/KAMP_Settings.cfg`
+- `KAMP/Line_Purge.cfg`
+- `FLUIDD UI Setup`
+- `Clean up the Fluidd Console`
+- `Fluidd-Settings-Backup.json`
+- `ORCA machine settings sept 2026`
+- `README.md`
 
 ---
 
-# Disclaimer
+## Recommended installation process
+
+1. Back up your existing configuration.
+2. Rename existing files before replacing them.
+3. Upload the supplied files into your Klipper config directory.
+4. Make sure `printer.cfg` includes the correct files.
+5. Restart Klipper.
+6. Check the console for errors.
+7. Verify:
+   - homing
+   - X/Y/Z movement
+   - probe operation
+   - bed mesh
+   - screw tilt
+   - Z tilt
+   - extruder and heater function
+   - fans
+   - filament sensor
+8. Import the Fluidd console settings if desired.
+9. Use the ORCA machine settings if you are slicing with ORCA.
+
+---
+
+## A note about the original Qidi config
+
+This project does not try to replace every Qidi OEM part of the printer setup.
+
+Instead, it keeps useful Qidi-specific compatibility sections and combines them with custom Klipper functionality to create a practical, working configuration for a Qidi Q2 without the Qidi Box.
+
+---
+
+## Important warnings
+
+These configuration files contain Qidi-specific movement coordinates, macro timings, temperatures, and hardware assumptions.
+
+They should not be treated as a universal Klipper configuration.
+
+If your printer has been modified or you have custom hardware changes, some values may need adjustment.
+
+Always check movement, temperature stability, nozzle wiping, and bed mesh behaviour after installing a new configuration.
+
+---
+
+## Disclaimer
 
 Use these files at your own risk.
 
-Always keep a backup of your original Qidi configuration.
+Always keep a backup of your original Qidi configuration before making changes.
 
-The author accepts no responsibility for damage to the printer, hotend, heated bed, electronics or other equipment resulting from the use of these configuration files or macros.
+The author accepts no responsibility for damage to the printer, hotend, heated bed, electronics, or other equipment caused by using these configuration files or macros.
 
 ---
 
-## Project Goal
+## Project goal
 
-The goal of this project is to make the transition to a more customised Klipper/Fluidd experience on a **Qidi Q2 without the Qidi Box** as straightforward as possible.
+The goal of this project is to make the transition to a more custom Klipper and Fluidd workflow on the Qidi Q2 as straightforward as possible.
 
-Instead of spending time working out which macros are required, where they belong, how KAMP needs to be configured and how the various Qidi functions fit together, this repository provides the configuration as a starting point.
+Instead of spending time figuring out which macros are needed, where they belong, and how KAMP and Qidi-specific functionality should be combined, this repository provides a ready-to-use base for a working setup without the Qidi Box.
 
-**Copy, configure, check and print.**
+Copy, configure, check, and print.
 
+---
 
+## Quick start summary
 
+If you want the short version:
+
+- This is a Qidi Q2 Klipper config for non-Qidi-Box setups.
+- It includes custom macros, KAMP adaptive meshing, and Fluidd tuning.
+- It has support for external filament spool or dry box workflows.
+- It also includes custom console filters and ORCA settings to make the workflow smoother.
+
+This repository is built to give you a practical starting point rather than a generic printer config.
 
