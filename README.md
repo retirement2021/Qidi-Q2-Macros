@@ -12,6 +12,8 @@ It includes a working printer config, custom macros, KAMP adaptive bed meshing, 
 
 This configuration is for the Qidi Q2 without the Qidi Box.
 
+Most of the Qidi Box code has been removed.
+
 If you have the Qidi Box installed, this setup is not intended for you.
 
 This project keeps the useful Qidi-compatible parts where needed, but the main goal is a simpler external-filament Klipper workflow.
