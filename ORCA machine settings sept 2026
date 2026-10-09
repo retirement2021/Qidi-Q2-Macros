@@ -95,3 +95,11 @@ UNLOAD_FILAMENT T=[current_extruder]
 # PAUSE G-CODE
 #-------------
 PAUSE
+
+
+ORCA PREPARE PAGE.
+You must make sure the "Label Objects" and the "Exclude Objects" are checked. 
+found at the bottom of the "Others" tab.
+Another perhaps useful addition is the "Filename Format" found direcrtly below "Exclude objects"
+{filament_settings_id[0]}_ {int((used_filament*100.0))/(100.0)}mtrs_{input_filename_base}.gcode
+Which shows what type of filament, how much filament and the print name, when exported into Fluidd
