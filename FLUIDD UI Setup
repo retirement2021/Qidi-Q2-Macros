@@ -1,157 +1,151 @@
 # FLUIDD UI Setup
 
-This guide explains how to back up your existing Klipper configuration and install the supplied configuration files and macros.
+This guide explains how to back up your current Klipper configuration and install the supplied configuration files and macros.
 
-## 1. Back Up Your Existing Configuration
+## 1. Back up your existing configuration
 
-In **Fluidd**, click the **Configuration** button on the left-hand side.
+In Fluidd, click the `Configuration` button on the left-hand side.
 
-### Back up the KAMP folder
+### Back up the `KAMP` folder
 
-1. Right-click the **KAMP** folder.
-2. Select **Create ZIP**.
+1. Right-click the `KAMP` folder.
+2. Select `Create ZIP`.
 3. Right-click the newly created ZIP file and download it to your PC.
 
 ### Back up `printer.cfg`
 
-Right-click **`printer.cfg`** and download it to your PC.
+Right-click `printer.cfg` and download it to your PC.
 
 ### Back up `gcode_macro.cfg`
 
-1. Open the **`klipper-macros-qd`** folder.
-2. Right-click **`gcode_macro.cfg`**.
+1. Open the `klipper-macros-qd` folder.
+2. Right-click `gcode_macro.cfg`.
 3. Download it to your PC.
 
-You should now have copies of all the original, unchanged files safely stored on your PC. **Do not skip this step.**
+You should now have copies of the original, unchanged files safely stored on your PC. Do not skip this step.
 
 ---
 
-## 2. Rename the Original Files
+## 2. Rename the original files
 
 Before installing the supplied files, rename the existing configuration files so they are preserved.
 
-Rename:
+Rename the following:
 
+- `KAMP.cfg` → `KAMP.cfg-original`
+- `printer.cfg` → `printer.cfg-original`
+- `klipper-macros-qd` → `klipper-macros-qd-original`
 
-KAMP.cfg
-→ KAMP.cfg-original
+Then open the `KAMP` folder and rename:
 
-printer.cfg
-→ printer.cfg-original
-
-klipper-macros-qd
-→ klipper-macros-qd-original
-
-Then open the **KAMP** folder and rename:
-
-adaptive_meshing.cfg
-→ adaptive_meshing.cfg-original
-
-KAMP_Settings.cfg
-→ KAMP_Settings.cfg-original
+- `adaptive_meshing.cfg` → `adaptive_meshing.cfg-original`
+- `KAMP_Settings.cfg` → `KAMP_Settings.cfg-original`
 
 These original files are retained as backups and can be restored if required.
 
 ---
 
-## 3. Install the Supplied KAMP Files
+## 3. Install the supplied KAMP files
 
-Open the **KAMP** folder.
+Open the `KAMP` folder.
 
-At the top of the page, click **+ ADD** and select **Upload Files**.
+At the top of the page, click `+ ADD` and select `Upload Files`.
 
-Upload the supplied:
+Upload the supplied files:
 
-adaptive_Meshing.cfg
-KAMP_Settings.cfg
+- `adaptive_Meshing.cfg`
+- `KAMP_Settings.cfg`
 
 Once uploaded, click the blue folder icon to return to the main configuration directory.
 
 ---
 
-## 4. Install the Main Configuration Files
+## 4. Install the main configuration files
 
-Click **+ ADD** again and upload:
+Click `+ ADD` again and upload:
 
-printer.cfg
-My-Configs.cfg
-gcode_macro.cfg
+- `printer.cfg`
+- `My-Configs.cfg`
+- `gcode_macro.cfg`
 
 Once all the files have been uploaded, double-click any configuration file to open it.
 
 In the top-right corner, click:
 
-**SAVE & RESTART**
+`SAVE & RESTART`
 
 This will save the changes and restart Klipper.
 
 ---
 
-## 5. Organising Macros in Fluidd
+## 5. Organising macros in Fluidd
 
-You can organise the available macros into groups to make them easier to find.
+You can organise the available macros into groups so they are easier to find.
 
 In Fluidd:
 
-1. Click the **Settings** button on the left.
-2. Scroll down to **Macros**.
-3. All of the macros will be jumbled up in the "uncategorised" section.
-4. Create & organise the useful macros into categorys such as: 
+1. Click the `Settings` button on the left.
+2. Scroll down to `Macros`.
+3. All of the macros will appear in the `uncategorised` section.
+4. Create and organise the useful macros into categories such as:
+   - Calibration
+   - Filament
+   - Print
 
-   * Calibration
-   * Filament
-   * Print
+5. Click on a macro and choose the category you want to assign it to.
+6. Only keep the macros you actually use and leave the rest in the uncategorised section. Aim for around 5–6 macros per category.
+7. You can move them around to change the order in which they are displayed.
 
-5. Click on a macro, a box will appear choose which catagory you want to put it in.
-6. Only pick out the useful ones you want to use and leave the rest in the uncategorised page. 5-6 in each category.
-7. They can be easily moved around to get the order you want them to be displayed
+Some useful macros to look for include:
 
-Some of the useful macros to look for are:
+### Calibration
+- `PID_BED`
+- `PID_EXTRUDER`
+- `PROBE_BED`
+- `SCREWS_TILT`
+- `Z_TILT`
+- `START_LUBRICATION`
+- `ALL_HEATERS_OFF`
 
-calabration category
-PID_BED
-PID_EXTRUDER
-PROB_BED
-SREWS_TILT
-Z_TILT
-PROBE_BED
-START_LUBRICATION
-ALL_HEATERS_OFF
+### Filament
+- `LOAD_FILAMENT`
+- `UNLOAD_FILAMENT`
 
-filament category
-LOAD_FILAMENT
-UNLOAD_FILAMENT
-
-print category
-SET_PAUSE_AT_LAYER
-CANCEL _PRINT
-PAUSE
-RESUME
-```
+### Print
+- `SET_PAUSE_AT_LAYER`
+- `CANCEL_PRINT`
+- `PAUSE`
+- `RESUME`
 
 Organising the macros this way gives you quick access to the functions you use most often.
 
 ---
 
-## 6. Bed Screw Adjustment
+## 6. Bed screw adjustment
 
-The basic `SCREWS_TILT_CALCULATE` function is also available directly through the **Tools** section in Fluidd.
-The "SCREWS_TILT" macro is a fully prepared macro of the "SCREWS_TILT_CALCULATE" function. 
-It homes, heats the bed, heats the nozzle, wipes the nozzle before it starts ensuring no filament is protruding from the nozzle,
-which is important seeing the nozzle is the bed probe.
+The basic `SCREWS_TILT_CALCULATE` function is also available directly through the `Tools` section in Fluidd.
 
-The Z_TILT macro does a similar job of homeing, heating and wiping for more complete user experience than the supplied function.
+The `SCREWS_TILT` macro is a fully prepared version of the `SCREWS_TILT_CALCULATE` function. It homes the printer, heats the bed, heats the nozzle, and wipes the nozzle before starting. This helps ensure no filament is sticking out from the nozzle, which is important because the nozzle is also the bed probe.
 
-UPGRADE: replacing the bed adjustment nuts and thunb nuts with a nylock nut and a plain washer on each bed adjust bolt makes bed tramming much easier. 
-I also replaced the original bed springs with much stronger springs. Blue 16 OD x 8.5 ID x 15mm length. Giving much more resistance when adjusting.
+The `Z_TILT` macro does a similar job, but includes homing, heating, and wiping for a smoother and more complete user experience than the stock function.
+
+### Upgrade
+Replacing the bed adjustment nuts and thumb nuts with nylock nuts and plain washers on each bed adjustment bolt makes bed tramming much easier.
+
+I also replaced the original bed springs with much stronger springs: Blue 16 OD x 8.5 ID x 15 mm. These provide far more resistance when adjusting the bed.
+
 https://www.aliexpress.com/item/1005010444681975.html?spm=a2g0o.order_list.order_list_main.48.ca1a1802MWPtS8
+
 ---
 
-### Important
+## Important
 
-Keep your original configuration files you downloaded from your machine as a backup. 
-If you encounter a problem with the new configuration, you can use these files to restore your original setup.
+Keep the original configuration files you downloaded from your machine as a backup.
 
-This is your "get out of jail card" if you completely muck it up, you can AS A LAST RESORT revert it back to factory settings:
-https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md. 
-Do read it carefully and follow it to the letter. Point 7 must be understood. 
+If you run into problems with the new configuration, you can use these files to restore your original setup.
+
+This is your "get out of jail card". If you really mess things up, you can revert to factory settings as a last resort:
+
+https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md
+
+Please read it carefully and follow it exactly. Point 7 is especially important.
