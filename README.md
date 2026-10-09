@@ -115,6 +115,7 @@ This repo includes custom nozzle cleaning routines for the Qidi Q2, such as:
 - `MOVE_TO_TRASH`
 
 A maintenance reminder timer is also included, with the current default set to trigger after around 30 hours of print time.
+A lubrication sequence to prepare the printer for cleaning and lubrication after which the maintenance reminder timer is reset.
 
 ---
 
@@ -141,7 +142,7 @@ The repo also includes example ORCA machine settings for print start/end G-code:
 
 - `ORCA machine settings sept 2026`
 
-This is useful if you want your slicer to match the same start/end logic used by this config.
+This is important if you want your slicer to match the same start/end logic used by this config.
 
 ---
 
