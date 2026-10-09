@@ -93,7 +93,8 @@ In Fluidd:
    - Print
 
 5. Click on a macro and choose the category you want to assign it to.
-6. Only keep the macros you actually use and leave the rest in the uncategorised section. Aim for around 5–6 macros per category.
+6. Only keep the macros you actually use and leave the rest in the uncategorised section. 
+Aim for around 5–6 macros per category.
 7. You can move them around to change the order in which they are displayed.
 
 Some useful macros to look for include:
@@ -125,14 +126,19 @@ Organising the macros this way gives you quick access to the functions you use m
 
 The basic `SCREWS_TILT_CALCULATE` function is also available directly through the `Tools` section in Fluidd.
 
-The `SCREWS_TILT` macro is a fully prepared version of the `SCREWS_TILT_CALCULATE` function. It homes the printer, heats the bed, heats the nozzle, and wipes the nozzle before starting. This helps ensure no filament is sticking out from the nozzle, which is important because the nozzle is also the bed probe.
+The `SCREWS_TILT` macro is a fully prepared version of the `SCREWS_TILT_CALCULATE` function. 
+It homes the printer, heats the bed, heats the nozzle, and wipes the nozzle before starting. 
+This helps ensure no filament is sticking out from the nozzle, which is important because the nozzle is also the bed probe.
 
-The `Z_TILT` macro does a similar job, but includes homing, heating, and wiping for a smoother and more complete user experience than the stock function.
+The `Z_TILT` macro does a similar job, but includes homing, heating, and wiping 
+for a smoother and more complete user experience than the stock function.
 
 ### Upgrade
-Replacing the bed adjustment nuts and thumb nuts with nylock nuts and plain washers on each bed adjustment bolt makes bed tramming much easier.
+Replacing the bed adjustment nuts and thumb nuts with nylock nuts and plain washers on each bed adjustment bolt 
+which makes bed tramming much easier.
 
-I also replaced the original bed springs with much stronger springs: Blue 16 OD x 8.5 ID x 15 mm. These provide far more resistance when adjusting the bed.
+I also replaced the original bed springs with much stronger springs: Blue 16 OD x 8.5 ID x 15 mm. 
+These provide far more resistance when adjusting the bed.
 
 https://www.aliexpress.com/item/1005010444681975.html?spm=a2g0o.order_list.order_list_main.48.ca1a1802MWPtS8
 
