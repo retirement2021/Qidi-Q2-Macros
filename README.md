@@ -6,6 +6,8 @@ This repo is designed to make a Qidi Q2 easier to run with Fluidd and Klipper us
 
 It includes a working printer config, custom macros, KAMP adaptive bed meshing, filament routines, nozzle cleaning, pause controls, and Fluidd helpers.
 
+Added a Lubrication reminder and a lubrication sequence
+
 ---
 
 ## Important
