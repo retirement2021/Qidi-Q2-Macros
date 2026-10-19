@@ -32,6 +32,7 @@ Starts with-  // [virtual_sdcard] extraction_progress:
 
 	
 I have added quite a few more filters to clean the console up massivley, it now just shows the important stuff and so much more readable. 
+If there any others that you want filtered, just follow the same format.
 There are too many to put in this copy and paste text file.
 However i have shared my .json file of the settings. Down load it and apply it to your own settings page.
 
