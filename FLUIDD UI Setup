@@ -32,14 +32,14 @@ Before installing the supplied files, rename the existing configuration files so
 
 Rename the following:
 
-- `KAMP.cfg` → `KAMP.cfg-original`
-- `printer.cfg` → `printer.cfg-original`
-- `klipper-macros-qd` → `klipper-macros-qd-original`
+- `KAMP.cfg` → `KAMP.cfg-bkup`
+- `printer.cfg` → `printer.cfg-bkup`
+- `klipper-macros-qd` → `klipper-macros-qd-bkup`
 
 Then open the `KAMP` folder and rename:
 
-- `adaptive_meshing.cfg` → `adaptive_meshing.cfg-original`
-- `KAMP_Settings.cfg` → `KAMP_Settings.cfg-original`
+- `adaptive_meshing.cfg` → `adaptive_meshing.cfg-bkup`
+- `KAMP_Settings.cfg` → `KAMP_Settings.cfg-bkup`
 
 These original files are retained as backups and can be restored if required.
 
@@ -60,13 +60,13 @@ Once uploaded, click the blue folder icon to return to the main configuration di
 
 ---
 
-## 4. Install the main configuration files
+## 4. Install the main configuration files from this repo
 
 Click `+ ADD` again and upload:
 
 - `printer.cfg`
-- `My-Configs.cfg`
-- `gcode_macro.cfg`
+- `MACROS zip`
+
 
 Once all the files have been uploaded, double-click any configuration file to open it.
 
@@ -84,7 +84,7 @@ You can organise the available macros into groups so they are easier to find.
 
 In Fluidd:
 
-1. Click the `Settings` button on the left.
+1. Click the `Settings` button on the bottom left.(cog)
 2. Scroll down to `Macros`.
 3. All of the macros will appear in the `uncategorised` section.
 4. Create and organise the useful macros into categories such as:
@@ -100,6 +100,7 @@ Aim for around 5–6 macros per category.
 Some useful macros to look for include:
 
 ### Calibration
+
 - `PID_BED`
 - `PID_EXTRUDER`
 - `PROBE_BED`
@@ -108,9 +109,11 @@ Some useful macros to look for include:
 - `START_LUBRICATION`
 - `ALL_HEATERS_OFF`
 
+
 ### Filament
 - `LOAD_FILAMENT`
 - `UNLOAD_FILAMENT`
+-  MY_MOVE_TO_TRASH
 
 ### Print
 - `SET_PAUSE_AT_LAYER`
@@ -133,11 +136,17 @@ This helps ensure no filament is sticking out from the nozzle, which is importan
 The `Z_TILT` macro does a similar job, but includes homing, heating, and wiping 
 for a smoother and more complete user experience than the stock function.
 
+The "START_LUBRICATION" will drop the bed to the bottom and bring the extruder to the front and release the motors so making the cleaning and lubrication easy.
+It will then with a push of a button go through a sequence to work the lubrication into the bearings, and at the end prompt you to wipe any access lubrication
+off and the final button press will finish the sequence and reset the lubrication timer. 
+In the "My_Calibration_Macro" file it is easy to adjust the accumulated time and the movement sequencies to your own requirements.
+It will also show in the console, accumulated printing time before the next lubrication service required.
+
 ### Upgrade
 Replacing the bed adjustment nuts and thumb nuts with nylock nuts and plain washers on each bed adjustment bolt 
 which makes bed tramming much easier.
 
-I also replaced the original bed springs with much stronger springs: Blue 16 OD x 8.5 ID x 15 mm. 
+I also replaced the original bed springs with much stronger springs: Blue 16 OD x 8.5 ID x 15 mm. (the springs need to have a ID to accommodate a 4mm nut
 These provide far more resistance when adjusting the bed.
 
 https://www.aliexpress.com/item/1005010444681975.html?spm=a2g0o.order_list.order_list_main.48.ca1a1802MWPtS8
@@ -150,7 +159,7 @@ Keep the original configuration files you downloaded from your machine as a back
 
 If you run into problems with the new configuration, you can use these files to restore your original setup.
 
-This is your "get out of jail card". If you really mess things up, you can revert to factory settings as a last resort:
+This is your "get out of jail card". If you really mess things up, you can revert to factory settings as a LAST RESORT:
 
 https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md
 
