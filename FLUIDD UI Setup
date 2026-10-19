@@ -45,7 +45,7 @@ These original files are retained as backups and can be restored if required.
 
 ---
 
-## 3. Install the supplied KAMP files
+## 3. Install the supplied KAMP files as this gives you a working adaptive bed mesh,the kamp purge line and the smart park
 
 Open the `KAMP` folder.
 
@@ -58,9 +58,14 @@ Upload the supplied files:
 
 Once uploaded, click the blue folder icon to return to the main configuration directory.
 
+
 ---
 
 ## 4. Install the main configuration files from this repo
+The printer.cfg has the every thing needed and everything removed to allow the MACROS folder to work without any conflicts.
+The MACROS folder has the Qidi Macro files that are needed and some macros removed.
+The "My filamnt Macro" file has everything associated with actual printing.
+The "My Calibration Macro" file has every thing to do with printer setup.
 
 Click `+ ADD` again and upload:
 
@@ -131,7 +136,7 @@ The basic `SCREWS_TILT_CALCULATE` function is also available directly through th
 
 The `SCREWS_TILT` macro is a fully prepared version of the `SCREWS_TILT_CALCULATE` function. 
 It homes the printer, heats the bed, heats the nozzle, and wipes the nozzle before starting. 
-This helps ensure no filament is sticking out from the nozzle, which is important because the nozzle is also the bed probe.
+This helps ensure the nozzle is clean, which is important because the nozzle is also the bed probe.
 
 The `Z_TILT` macro does a similar job, but includes homing, heating, and wiping 
 for a smoother and more complete user experience than the stock function.
@@ -158,6 +163,7 @@ https://www.aliexpress.com/item/1005010444681975.html?spm=a2g0o.order_list.order
 Keep the original configuration files you downloaded from your machine as a backup.
 
 If you run into problems with the new configuration, you can use these files to restore your original setup.
+At this point Chat GPT or Github's Copilot can be a life saver
 
 This is your "get out of jail card". If you really mess things up, you can revert to factory settings as a LAST RESORT:
 
