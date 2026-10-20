@@ -25,8 +25,9 @@ This project keeps the useful Qidi-compatible parts where needed, but the main g
 ## What’s in this repo
 
 - `printer.cfg` – main Qidi Q2 Klipper configuration
-- `My_Configs.cfg` – main custom print, filament, and calibration macros
-- `gcode_macro.cfg` – helper macros for homing, offsets, cleaning, pause/resume, and more
+- `My_Calibration_Macros.cfg` - all calibration macros and lubrication
+- `My_Filament_Macros.cfg`– main custom print and anything filament related
+- `Qidi_gcode_macro.cfg` – helper macros for homing, cleaning, pause/resume, and more
 - `KAMP/Adaptive_Meshing.cfg` – adaptive bed mesh support
 - `KAMP/KAMP_Settings.cfg` – KAMP settings
 - `KAMP/Line_Purge.cfg` – purge line support
