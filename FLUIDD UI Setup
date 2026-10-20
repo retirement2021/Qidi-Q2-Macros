@@ -71,7 +71,9 @@ Unzip the MACROS folder on your PC
 Click `+ ADD` again and upload:
 
 -  printer.cfg
--  MACROS folder
+-  My_Calibration_Marcros.cfg
+-  My_filament_Macros.cfg
+-  Qidi_gcode_Macro.cfg
 
 
 Once all the files have been uploaded, double-click any configuration file to open it.
