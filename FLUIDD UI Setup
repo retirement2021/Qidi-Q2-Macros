@@ -63,16 +63,15 @@ Once uploaded, click the blue folder icon to return to the main configuration di
 
 ## 4. Install the main configuration files from this repo
 The printer.cfg has the every thing needed and everything removed to allow the MACROS folder to work without any conflicts.
-The MACROS folder has the Qidi Macro files that are needed and some macros removed.
+The zipped MACROS folder has the Qidi Macro files that are needed and some macros removed.
 The "My filamnt Macro" file has everything associated with actual printing.
 The "My Calibration Macro" file has every thing to do with printer setup.
+Unzip the MACROS folder on your PC 
 
 Click `+ ADD` again and upload:
 
 -  printer.cfg
--  Qidi macro.cfg
--  My filament macros
--  My Calibration Macros
+-  MACROS folder
 
 
 Once all the files have been uploaded, double-click any configuration file to open it.
