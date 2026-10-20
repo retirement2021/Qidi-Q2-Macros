@@ -69,8 +69,10 @@ The "My Calibration Macro" file has every thing to do with printer setup.
 
 Click `+ ADD` again and upload:
 
-- `printer.cfg`
-- `MACROS zip`
+-  printer.cfg
+-  Qidi macro.cfg
+-  My filament macros
+-  My Calibration Macros
 
 
 Once all the files have been uploaded, double-click any configuration file to open it.
