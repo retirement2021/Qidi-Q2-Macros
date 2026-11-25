@@ -4,7 +4,7 @@ This guide explains how to back up your current Klipper configuration and instal
 
 ## 1. Back up your existing configuration
 
-In Fluidd, click the `Configuration` button on the left-hand side.
+In Fluidd, click the `Configuration` {...}  button on the left-hand side.
 
 ### Back up the `KAMP` folder
 
@@ -177,7 +177,7 @@ Keep the original configuration files you downloaded from your machine as a back
 If you run into problems with the new configuration, you can use these files to restore your original setup.
 At this point Chat GPT or Github's Copilot can be a life saver
 
-This is your "get out of jail card". If you really mess things up, you can revert to factory settings as a LAST RESORT:
+This is your "get out of jail card". If you really mess things up, you can revert to factory firmware as a LAST RESORT:
 
 https://github.com/qidi-community/q2-wiki/blob/main/content/stock-firmware-flash/README.md
 
