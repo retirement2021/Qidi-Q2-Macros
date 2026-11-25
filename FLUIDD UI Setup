@@ -98,6 +98,7 @@ In Fluidd:
 4. Create and organise the useful macros into categories such as:
    - Calibration
    - Filament
+   - Optimisation
    - Print
 
 5. Click on a macro and choose the category you want to assign it to.
@@ -108,13 +109,9 @@ Aim for around 5–6 macros per category.
 Some useful macros to look for include:
 
 ### Calibration
-
-- `PID_BED`
-- `PID_EXTRUDER`
 - `PROBE_BED`
 - `SCREWS_TILT`
 - `Z_TILT`
-- `START_LUBRICATION`
 - `ALL_HEATERS_OFF`
 
 
@@ -122,6 +119,14 @@ Some useful macros to look for include:
 - `LOAD_FILAMENT`
 - `UNLOAD_FILAMENT`
 -  MY_MOVE_TO_TRASH
+
+
+### Optimisation
+- `PID_BED`
+- `PID_EXTRUDER`
+- `START_LUBRICATION`
+-  SHOW_LUBRICATION_TIME
+
 
 ### Print
 - `SET_PAUSE_AT_LAYER`
@@ -144,15 +149,19 @@ This helps ensure the nozzle is clean, which is important because the nozzle is 
 The `Z_TILT` macro does a similar job, but includes homing, heating, and wiping 
 for a smoother and more complete user experience than the stock function.
 
-The "START_LUBRICATION" will drop the bed to the bottom and bring the extruder to the front and release the motors so making the cleaning and lubrication easy.
+The "START_LUBRICATION" will drop the bed and move through a Z axis 4 cycle lead screw cleaning sequence.
+Then move to the bottom and bring the extruder to the front and release the motors so making the cleaning and lubrication easy.
 It will then with a push of a button go through a sequence to work the lubrication into the bearings, and at the end prompt you to wipe any access lubrication
 off and the final button press will finish the sequence and reset the lubrication timer. 
-In the "My_Calibration_Macro" file it is easy to adjust the accumulated time and the movement sequencies to your own requirements.
+In the "My_Calibration_Macro" file the first block of the lubrication macro, it is easy to adjust the accumulated time and the movement sequencies to your own requirements.
 It will also show in the console, accumulated printing time before the next lubrication service required.
 
 ### Upgrade
 Replacing the bed adjustment nuts and thumb nuts with nylock nuts and plain washers on each bed adjustment bolt 
-which makes bed tramming much easier.
+which makes bed tramming much easier.(screws tilt adjust)
+
+A small box spanner like this which can be altered in length makes for the easy bed adjustment.
+https://www.aliexpress.com/item/1005012504791807.html?spm=a2g0o.order_list.order_list_main.288.20a41802UILWPA
 
 I also replaced the original bed springs with much stronger springs: Blue 16 OD x 8.5 ID x 15 mm. (the springs need to have a ID to accommodate a 4mm nut
 These provide far more resistance when adjusting the bed.
